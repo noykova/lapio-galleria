@@ -15,6 +15,9 @@
       .demo-card-square > .mdl-card__title {
         color: #fff;
         background: #46B6AC;
+        background-position: center center;
+        background-size: cover;
+        opacity: 0.9;
       }
     </style>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -46,25 +49,21 @@ $( document ).ready(function() {
         $("#cards").append(`
           <div class="mdl-cell mdl-cell--4-col" id=${entry.sha}>
             <div class="demo-card-square mdl-card mdl-shadow--2dp">
-              <div class="mdl-card__title mdl-card--expand">
+              <div style='background-image: url("https://github.com/Coolnesss/lapio-galleria/raw/master/pictures/${data.picture}");
+' class="mdl-card__title mdl-card--expand">
                 <h2 class="mdl-card__title-text">${data.name} (${data.ircnick})</h2>
               </div>
               <div class="mdl-card__supporting-text">
                 ${data.description}
               </div>
               <div class="mdl-card__actions mdl-card--border">
-                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                  View Updates
+                <a href=${data.homepage} class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                  Visit Homepage
                 </a>
               </div>
             </div>
           </div>`
         );
-        console.log($("#" + entry.sha)[0].classList);
-       $("#" + entry.sha)[0].classList.add(`
-         background:
-          url("pictures/${data.picture}") bottom right 15% no-repeat #46B6AC;
-        `)
       })
     })
 
