@@ -4,6 +4,7 @@ var address = 'https://api.github.com/repos/Coolnesss/lapio-galleria/contents/pr
 $.get(address, function(data) {
   data.forEach(function(entry) {
     $.getJSON(entry.download_url, function(data) {
+      $("#cards")[0].className = "mdl-grid"
       $("#cards").append(`
         <div class="mdl-cell mdl-cell--4-col" id=${entry.sha}>
           <div class="demo-card-square mdl-card mdl-shadow--2dp">
