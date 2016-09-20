@@ -19,10 +19,16 @@
 
 </html>
 <script>
+  var address = 'https://api.github.com/repos/Coolnesss/lapio-galleria/contents/infot'
+
   var eka = '<div class="mdl-cell mdl-cell--4-col">'
   var toka = '</div>'
 
-  $.get("")
+  $.get(address, function(data) {
+    data.forEach(function(object) {
+      $("#cards").append(eka + object.download_url + toka);
+    })
+  })
 
 
 </script>
