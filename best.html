@@ -1,6 +1,17 @@
 <html>
 
+
   <head>
+    <style>
+      .demo-card-square.mdl-card {
+        width: 320px;
+        height: 320px;
+      }
+      .demo-card-square > .mdl-card__title {
+        color: #fff;
+        background: #46B6AC;
+      }
+    </style>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
     <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
@@ -8,10 +19,7 @@
   </head>
 
   <body>
-    <div class="mdl-grid">
-      <div id="cards">
-
-      </div>
+    <div class="mdl-grid" id="cards">
     </div>
 
   </body>
@@ -19,22 +27,39 @@
 
 </html>
 <script>
-  var address = 'https://api.github.com/repos/Coolnesss/lapio-galleria/contents/infot'
+var address = 'https://api.github.com/repos/Coolnesss/lapio-galleria/contents/infot'
 
-  var eka = '<div class="mdl-cell mdl-cell--4-col">'
-  var toka = '</div>'
 
+
+$( document ).ready(function() {
   $.get(address, function(data) {
+
     data.forEach(function(entry) {
 
-      console.log(entry.download_url)
       $.get(entry.download_url, function(data) {
-        data = JSON.parse(data);
         console.log(data);
-        $("#cards").append(eka + entryJson.information.name + toka);
+        data = JSON.parse(data);
+        $("#cards").append(`
+          <div class="mdl-cell mdl-cell--4-col">
+            <div class="demo-card-square mdl-card mdl-shadow--2dp">
+              <div class="mdl-card__title mdl-card--expand">
+                <h2 class="mdl-card__title-text">${data.name} (${data.ircnick})</h2>
+              </div>
+              <div class="mdl-card__supporting-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Aenan convallis.
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                  View Updates
+                </a>
+              </div>
+            </div>
+          </div>`
+        );
       })
     })
+
   })
-
-
+})
 </script>
