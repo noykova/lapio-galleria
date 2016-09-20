@@ -26,9 +26,12 @@
 
   $.get(address, function(data) {
     data.forEach(function(entry) {
-      $.getJSON(entry.download_url, function(entry) {
-        console.log(entry);
-        $("#cards").append(eka + entry.information.name + toka);
+
+      console.log(entry.download_url)
+      $.get(entry.download_url, function(data) {
+        data = JSON.parse(data);
+        console.log(data);
+        $("#cards").append(eka + entryJson.information.name + toka);
       })
     })
   })
