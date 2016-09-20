@@ -7,7 +7,7 @@ $.get(address, function(data) {
       $("#cards").append(`
         <div class="mdl-cell mdl-cell--4-col" id=${entry.sha}>
           <div class="demo-card-square mdl-card mdl-shadow--2dp">
-            <div style='background-image: url("${data.picture}");' class="mdl-card__title mdl-card--expand">
+            <div style='background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.6), transparent), url("${data.picture}");' class="mdl-card__title mdl-card--expand">
               <h2 class="mdl-card__title-text">${data.name} (${data.ircnick})</h2>
             </div>
             <div class="mdl-card__supporting-text">
