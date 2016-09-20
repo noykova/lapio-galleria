@@ -25,8 +25,11 @@
   var toka = '</div>'
 
   $.get(address, function(data) {
-    data.forEach(function(object) {
-      $("#cards").append(eka + object.download_url + toka);
+    data.forEach(function(entry) {
+      $.getJSON(entry.download_url, function(entry) {
+        console.log(entry);
+        $("#cards").append(eka + entry.information.name + toka);
+      })
     })
   })
 
